@@ -2,13 +2,11 @@
 using namespace std;
 
 class Employee{
-    private:
+    protected:
         int id;
         double salary;
     public:
         Employee(){
-            id=03;
-            salary=200000;
         }
         Employee(int i,double s){
             id=i;
@@ -26,7 +24,7 @@ class Employee{
         int getSalary(){
             return salary;
         }
-        void Accpet(){
+        void accept(){
             cout<<"Enter Employee Id:";
             cin>>id;
             cout<<"Enter Employee Salary:";
@@ -39,13 +37,19 @@ class Employee{
 };
 
 class Manager : virtual public Employee{
-    private:
+    protected:
         double bonus;
     public:
         Manager(){
-            bonus=2000;
+            int id = 12;
+            double salary=20000;
+            double bonus = 2000;
+            
+
         }
-        Manager(double b){
+        Manager(int i ,double s ,  double b){
+            Employee::id=i;
+            Employee::salary=s;
             bonus=b;
         }
         void setBonus(double b){
@@ -55,12 +59,18 @@ class Manager : virtual public Employee{
             return bonus;
         }
         void accept(){
+            Employee::accept();
+
+        }
+        void acceptManager(){
+            cout<<"Enter bonus:";
+            cin>>bonus;
 
         }
 };
 
 class Salesman:virtual public Employee{
-    private:
+    protected:
         double commission;
     public:
         Salesman(){
@@ -70,9 +80,28 @@ class Salesman:virtual public Employee{
             commission=c;
         }
         void setCommission(double d){
-            
+            commission=d;
+        }
+        void accept(){
+            Employee::accept();
+        }
+        void acceptSalesman(){
+
         }
 };
-int main(){
+class SalesManager : public Manager, public Salesman{
+public:
+    
 
+    
+};
+int main(){
+    Employee e1;
+    Salesman s1;
+    int n = s1.getId();
+    
+
+    
+   
+    cout<<n;
 }
