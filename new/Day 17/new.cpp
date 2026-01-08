@@ -1,31 +1,40 @@
 #include<iostream>
-#include<vector>
-#include<algorithm>
+#include<map>
 using namespace std;
-//STL:-Standard Template Library
+//STL map
 int main()
-{
-    //1. Containers
-    //dynamic array
-                 //0   1  2  3  4
-    vector<int> v={11,40,25,10,25};
-    cout<<"size of v="<<v.size()<<endl;
-    cout<<"v 1st ele=>"<<v[0]<<endl;
-    for(int i=0; i<v.size();i++)
-    {
-        cout<<" "<<v[i];
+{   
+// Q.Store the students roll number and mark, so that given roll number marks can be found quickly.
+// • Key = roll of type int and value = marks of type double
+    // map<key, value> m;
+    map<int, double> m; 
+    m[11]=98.23;
+    m[21]=93.25;
+    m[42]=99.43;
+    m[10]=93.25; //value can be duplicate
+    m[21]=95.66; //in map key should not be duplicate and if it is duplicated then 
+    //it will conside the latest version of the duplicate entry here 93.25 will be
+    //replaced with 95.66
+    cout<<"Roll No"<<"=>"<<"Marks"<<endl;
+    map<int , double>::iterator itr=m.begin();
+    while(itr!=m.end())
+    {    //   first, second
+        //map<key ,  value>
+        cout<<itr->first<<"=>"<<itr->second<<endl;
+            // rollNo            //marks
+            itr++;
     }
-    // 2. Algorithm:- rich or extra functionality van be performed on STL containers
-   // reverse(v.begin(), v.end()); // reverse the container elements
-    sort(v.begin(),v.end()); //sort the container elements
-    int cnt= count(v.begin(),v.end(),25);  //count the occurrence of particular element in container
-    cout<<endl<<"ele count in vector="<<cnt<<endl;
-    //3.Iterator:- used to traverse through the containers
-    cout<<endl<<"====Printing the vector using the iterator===="<<endl;
-    vector<int>::iterator itr=v.begin();// placing the iterator on 1st elemet of container
-    while(itr!=v.end())
-    {
-        cout<<" "<<*itr;//printing the element of vector
-        itr++; 
+
+    m.erase(10); // the student having roll(key) 10 his / her entry will be deleted
+    // from map
+    cout<<endl<<"=====After erase ======"<<endl;
+    itr=m.begin();
+    while(itr!=m.end())
+    {    //   first, second
+        //map<key ,  value>
+        cout<<itr->first<<"=>"<<itr->second<<endl;
+            // rollNo            //marks
+            itr++;
     }
+
 }
