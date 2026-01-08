@@ -1,0 +1,35 @@
+2026-01-08T13:34:11.954Z INFO Is remote: false
+2026-01-08T13:34:11.955Z INFO Starting Local. Installation path: /Users/mohammadfarooqshaikh/Documents/pythagora
+2026-01-08T13:34:11.955Z INFO [MainProvider] Creating new MainProvider instance...
+2026-01-08T13:34:11.956Z INFO [TabsManager] Code view listener set up at initialization
+2026-01-08T13:34:11.956Z INFO Installation path exists: /Users/mohammadfarooqshaikh/Documents/pythagora
+2026-01-08T13:34:11.956Z INFO Initializing database with URL: file:/Users/mohammadfarooqshaikh/Documents/pythagora/pythagora-core/data/database/pythagora.db
+2026-01-08T13:34:11.958Z INFO Database file exists, skipping prisma generate/push for faster startup
+2026-01-08T13:34:11.958Z INFO Database initialized successfully
+2026-01-08T13:34:11.959Z INFO [Migration] Checking for database migration...
+2026-01-08T13:34:12.941Z INFO [Migration] No migration needed
+2026-01-08T13:51:57.223Z INFO Closing entire Pythagora extension...
+2026-01-08T13:51:57.234Z ERROR Error closing extension
+Error: Canceled
+Stack: Canceled: Canceled
+    at new wU (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:120470)
+    at l5.U (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:125080)
+    at Proxy.s.<computed>.n.charCodeAt.s.<computed> (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:29:122574)
+    at cA.g (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:116:41228)
+    at cA.executeCommand (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:116:40732)
+    at Object.executeCommand (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:212:102269)
+    at closeEntirePythagoraExtension (/Users/mohammadfarooqshaikh/.vscode/extensions/pythagoratechnologies.pythagora-vs-code-2.6.19/out/extension.js:542:31)
+    at Object.deactivate (/Users/mohammadfarooqshaikh/.vscode/extensions/pythagoratechnologies.pythagora-vs-code-2.6.19/out/extension.js:409:15)
+    at HX.eb (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:11850)
+    at file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:10000
+    at Array.map (<anonymous>)
+    at HX.$ (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:9988)
+    at HX.terminate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:120:10231)
+    at yN.terminate (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:122:914)
+    at Us (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:404:11129)
+    at MessagePortMain.<anonymous> (file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js:404:7604)
+    at MessagePortMain.emit (node:events:519:28)
+    at Object.MessagePortMain._internalPort.emit (node:electron/js2c/utility_init:2:2949)
+Extra context: {
+  "message": "Canceled"
+}

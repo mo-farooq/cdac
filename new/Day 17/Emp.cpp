@@ -3,119 +3,111 @@
 #include <string>
 using namespace std;
 
-// Employee class to store employee information
 class Employee {
-private:
-    int empId;
-    string empName;
-    double empSalary;
+    int id;
+    string name;
+    double salary;
 
 public:
-    // Function to accept employee details from user
-    void inputEmployeeDetails() {
-        cout << "Enter Employee ID: ";
-        cin >> empId;
-        cout << "Enter Employee Name: ";
-        cin.ignore(); // To clear the input buffer
-        getline(cin, empName); // Using getline to allow spaces in name
-        cout << "Enter Employee Salary: ";
-        cin >> empSalary;
+    void accept(int inputId) {
+        id = inputId;
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Salary: ";
+        cin >> salary;
     }
 
-    // Function to display employee information
-    void showEmployeeDetails() const {
-        cout << "Employee ID: " << empId
-             << ", Employee Name: " << empName
-             << ", Employee Salary: " << empSalary << endl;
+    void display() const {
+        cout << "ID: " << id
+             << ", Name: " << name
+             << ", Salary: " << salary << endl;
     }
 
-    // Getter function to return employee ID
-    int getEmployeeId() const {
-        return empId;
+    int getId() const {
+        return id;
     }
 
-    // Function to update employee salary
-    void modifySalary(double newSal) {
-        empSalary = newSal;
+    void updateSalary(double sal) {
+        salary = sal;
     }
 };
 
 int main() {
-    vector<Employee> empList; // Vector to store employee objects
-    int userChoice;
+    vector<Employee> employees;
+    int choice;
 
-    // Menu-driven program for employee management
     do {
-        cout << "\n=== EMPLOYEE MANAGEMENT SYSTEM ===" << endl;
-        cout << "1. Add New Employee" << endl;
-        cout << "2. Display All Employees" << endl;
-        cout << "3. Search Employee by ID" << endl;
-        cout << "4. Update Employee Salary" << endl;
-        cout << "5. Exit Program" << endl;
-        cout << "Please enter your choice (1-5): ";
-        cin >> userChoice;
+        cout << "\n--- Employee Menu ---\n";
+        cout << "1. Add Employee\n";
+        cout << "2. Display All Employees\n";
+        cout << "3. Search Employee by ID\n";
+        cout << "4. Update Employee Salary using ID\n";
+        cout << "5. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
 
-        if (userChoice == 1) {
-            Employee newEmployee;
-            newEmployee.inputEmployeeDetails();
-            empList.push_back(newEmployee);
-            cout << "Employee added successfully!" << endl;
-        }
-        else if (userChoice == 2) {
-            if (empList.empty()) {
-                cout << "No employees to display." << endl;
+        if (choice == 1) {
+            int newId;
+            cout << "Enter ID: ";
+            cin >> newId;
+
+            bool exists = false;
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees[i].getId() == newId) {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (exists) {
+                cout << "Error: Employee with this ID already exists!\n";
             } else {
-                cout << "\n--- All Employee Records ---" << endl;
-                for (const auto &emp : empList) {
-                    emp.showEmployeeDetails();
-                }
+                Employee e;
+                e.accept(newId);
+                employees.push_back(e);
             }
         }
-        else if (userChoice == 3) {
-            int searchId;
-            cout << "Enter Employee ID to search: ";
-            cin >> searchId;
-            bool employeeFound = false;
+        else if (choice == 2) {
+            for (int i = 0; i < employees.size(); i++) {
+                employees[i].display();
+            }
+        }
+        else if (choice == 3) {
+            int sid;
+            cout << "Enter ID to search: ";
+            cin >> sid;
+            bool found = false;
 
-            for (const auto &emp : empList) {
-                if (emp.getEmployeeId() == searchId) {
-                    cout << "Employee found: ";
-                    emp.showEmployeeDetails();
-                    employeeFound = true;
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees[i].getId() == sid) {
+                    employees[i].display();
+                    found = true;
                     break;
                 }
             }
-            if (!employeeFound) {
-                cout << "Employee with ID " << searchId << " not found." << endl;
-            }
+            if (!found) cout << "Employee not found.\n";
         }
-        else if (userChoice == 4) {
-            int updateId;
-            double updatedSalary;
-            cout << "Enter Employee ID to update salary: ";
-            cin >> updateId;
-            cout << "Enter new salary: ";
-            cin >> updatedSalary;
+        else if (choice == 4) {
+            int uid;
+            double newSalary;
+            cout << "Enter ID: ";
+            cin >> uid;
 
-            bool salaryUpdated = false;
-            for (auto &emp : empList) {
-                if (emp.getEmployeeId() == updateId) {
-                    emp.modifySalary(updatedSalary);
-                    salaryUpdated = true;
-                    cout << "Salary updated successfully for Employee ID " << updateId << endl;
+            bool updated = false;
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees[i].getId() == uid) {
+                    cout << "Enter new salary: ";
+                    cin >> newSalary;
+                    employees[i].updateSalary(newSalary);
+                    updated = true;
+                    cout << "Salary updated successfully.\n";
                     break;
                 }
             }
-            if (!salaryUpdated) {
-                cout << "Employee with ID " << updateId << " not found." << endl;
-            }
-        }
-        else if (userChoice != 5) {
-            cout << "Invalid choice! Please enter a number between 1-5." << endl;
+            if (!updated) cout << "Employee not found.\n";
         }
 
-    } while (userChoice != 5);
+    } while (choice != 5);
 
-    cout << "Thank you for using Employee Management System!" << endl;
     return 0;
 }
